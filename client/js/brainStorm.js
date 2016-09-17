@@ -1,11 +1,10 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var MaterialUI = require('material-ui');
-// var io = require('./socket.io/socket.io.js');
-// var socket = io.connect(windows.location.origin);
 require('react-tap-event-plugin')();
 
 var loginPage = require('./components/loginPage');
+var groupList = require('./components/groupList');
 var store = require('./store');
 
 var app = React.createClass({
@@ -52,7 +51,9 @@ var app = React.createClass({
   },
 
   toggleView: function(){
-    this.setState({view: (this.state.view == 'Map') ? 'List' : 'Map'});
+    this.setState(
+        {view: (this.state.view == 'Map') ? 'List' : 'Map',
+        page: (this.state.view == 'Map') ? loginPage : groupList});
   },
 
   render: function(){

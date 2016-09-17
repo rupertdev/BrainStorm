@@ -14,8 +14,6 @@ map.on('click', function(e){
 
 map.locate();
 
-// var socket = io.connect(window.location.origin);
-
 socket.emit('getSessions');
 
 socket.on('sendSession', function(data){

@@ -1,6 +1,4 @@
 var React = require('react');
-var ReactDOM = require('react-dom');
-var MaterialUI = require('material-ui');
 var store = require('../store');
 
 var loginPage = React.createClass({
