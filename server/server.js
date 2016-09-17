@@ -41,7 +41,7 @@ var get_distance = function(point_a, point_b){
     console.log(distance);
     return distance;
 };
-
+// Socket Handlers
 io.on('connection', function(socket){
     socket.on('createSession', function(data){
         console.log(data);
