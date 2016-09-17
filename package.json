@@ -1,0 +1,11 @@
+{
+  "name": "BrainStorm",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "latest",
+    "react": "latest",
+    "redux": "latest",
+    "socket.io-utils": "latest",
+    "webpack": "latest"
+  }
+}
