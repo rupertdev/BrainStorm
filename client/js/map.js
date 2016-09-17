@@ -28,3 +28,7 @@ socket.on('returnSessions', function(data){
         L.marker(item.latlng).addTo(map);
     });
 });
+
+socket.on('returnCloseSessions', function(data){
+   console.log(data);
+});

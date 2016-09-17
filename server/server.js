@@ -34,6 +34,13 @@ var server = app.listen(config.port, function () {
     io.listen(server);
 });
 
+var get_distance = function(point_a, point_b){
+    var xs = Math.abs(point_a.lat - point_b.lat);
+    var ys = Math.abs(point_a.lng - point_b.lng);
+    var distance =  Math.sqrt(Math.pow(xs, 2) + Math.pow(ys, 2));
+    console.log(distance);
+    return distance;
+};
 
 io.on('connection', function(socket){
     socket.on('createSession', function(data){
@@ -54,6 +61,25 @@ io.on('connection', function(socket){
             sessions.find().toArray(function(err, items){
                 all_sessions = items;
                 socket.emit('returnSessions', all_sessions);
+            });
+            db.close();
+        });
+    });
+
+    socket.on('getCloseSessions', function(data){
+        cur_loc = data.latlng;
+        MongoClient.connect(url, function(err, db) {
+            var sessions = db.collection('sessions');
+            var close_sessions = [];
+            sessions.find().toArray(function(err, items){
+                items.forEach(function(session){
+                    var distance = get_distance(session.latlng, cur_loc);
+                    if(distance < data.threshold){
+                        session.distance = distance;
+                        close_sessions.push(session);
+                    }
+                });
+                socket.emit('returnCloseSessions', close_sessions);
             });
             db.close();
         });
