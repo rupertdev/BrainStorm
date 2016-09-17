@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "dependencies": {
     "express": "latest",
+    "font-awesome": "^4.6.3",
     "react": "latest",
+    "react-bootstrap": "^0.30.3",
     "redux": "latest",
     "socket.io-utils": "latest",
     "webpack": "latest"
