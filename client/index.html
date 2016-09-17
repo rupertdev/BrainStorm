@@ -4,6 +4,8 @@
     <meta charset=utf-8 />
     <title>Brainstorm</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <meta name="google-signin-client_id" content='210510721729-c7ahaj23qan148j9gaibguebm7l9g466.apps.googleusercontent.com'>
+
     <script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
     <link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet' />
     <style>
@@ -20,5 +22,11 @@
 <div id="map" class="dark"></div>
 <script src="appBundle.js"></script>
 <script src="js/map.js"></script>
+<script src="https://apis.google.com/js/platform.js?onload=triggerGoogleLoaded" async defer></script>
+<script type="text/javascript">
+    function triggerGoogleLoaded() {
+        window.dispatchEvent(new Event('google-loaded'));
+    }
+</script>
 </body>
 </html>
