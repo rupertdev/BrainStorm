@@ -8,8 +8,12 @@
     <link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet' />
     <style>
         body { margin:0; padding:0; }
-        #map { position:absolute; top:0; bottom:0; width:100%; z-index: -1}
+        #map { position:absolute; top:63px; bottom:0; width:100%; z-index: -1}
     </style>
+    <script src="./socket.io/socket.io.js"></script>
+    <script>
+        var socket = io.connect(window.location.origin);
+    </script>
 </head>
 <body>
 <div id="app"></div>

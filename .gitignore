@@ -50,6 +50,12 @@ lib-cov
 # Coverage directory used by tools like istanbul
 coverage
 
+# db dir
+dat
+
+# atom dir
+atom
+
 # nyc test coverage
 .nyc_output
 

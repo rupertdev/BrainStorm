@@ -5,6 +5,7 @@
     "babel-core": "latest",
     "babel-loader": "latest",
     "express": "latest",
+    "mongodb": "^2.2.10",
     "material-ui": "latest",
     "react": "latest",
     "react-dom": "latest",
