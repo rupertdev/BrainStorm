@@ -7,4 +7,24 @@ map.on('locationfound', function(e){
     L.marker(e.latlng).addTo(map);
     console.log(e.latlng);
 });
+
+map.on('click', function(e){
+    map.openPopup(''+e.latlng, e.latlng);
+});
+
 map.locate();
+
+// var socket = io.connect(window.location.origin);
+
+socket.emit('getSessions');
+
+socket.on('sendSession', function(data){
+    console.log(data);
+});
+
+// Creates markers for each of the returned sessions
+socket.on('returnSessions', function(data){
+    data.forEach(function(item){
+        L.marker(item.latlng).addTo(map);
+    });
+});
