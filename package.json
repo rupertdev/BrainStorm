@@ -2,12 +2,19 @@
   "name": "BrainStorm",
   "version": "0.0.1",
   "dependencies": {
+    "babel-core": "latest",
+    "babel-loader": "latest",
     "express": "latest",
-    "font-awesome": "^4.6.3",
+    "material-ui": "latest",
     "react": "latest",
-    "react-bootstrap": "^0.30.3",
+    "react-dom": "latest",
+    "react-tap-event-plugin": "latest",
     "redux": "latest",
     "socket.io-utils": "latest",
     "webpack": "latest"
+  },
+  "scripts": {
+    "pack": "webpack webpack.config.js --progress --colors",
+    "watch": "webpack webpack.config.js --progress --colors --watch"
   }
 }
