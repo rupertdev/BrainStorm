@@ -1,46 +1,52 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+
 var MaterialUI = require('material-ui');
 require('react-tap-event-plugin')();
 
 var loginPage = require('./components/loginPage');
-var store = require('./store');
+var formAGroupDialog = require('./components/formAGroupDialog');
+var askForHelpDialog = require('./components/askForHelpDialog');
+var preferencesDialog = require('./components/preferencesDialog');
+// var store = require('./store');
+// var actions = require('./actions');
 
 var app = React.createClass({
   getInitialState: function() {
     return {
       open: false,
       view: 'Map',
-      page: loginPage
+      page: null,
     };
   },
 
-  goToHelpSomeone: function(){
+  openStartAGroupDialog : function(){
     this.setState({
       open: !this.state.open,
-      page: 'helpSomeone'
+      page: formAGroupDialog
     });
   },
 
-  goToHelpAGroup: function(){
+  openAskForHelpDialog : function(){
     this.setState({
       open: !this.state.open,
-      page: 'helpAGroup'
+      page: askForHelpDialog
     });
   },
 
-  goToGetHelp: function(){
+  openPreferencesDialog : function(){
     this.setState({
       open: !this.state.open,
-      page: 'getHelp'
+      page: preferencesDialog
     });
   },
 
-  goToPreferences: function(){
+  goHome: function(){
+    console.log('goHome');
     this.setState({
       open: !this.state.open,
-      page: 'preferences'
-    });
+      page: preferencesDialog
+    })
   },
 
   toggleDrawer : function(){
@@ -54,6 +60,7 @@ var app = React.createClass({
   },
 
   render: function(){
+    console.log('render');
     return (
       React.createElement(MaterialUI.MuiThemeProvider, {},
         React.createElement('div', {},
@@ -68,15 +75,18 @@ var app = React.createClass({
                 open: this.state.open,
                 docked: false,
                 children: React.createElement(MaterialUI.List,{},
-                  React.createElement(MaterialUI.ListItem, {leftIcon: MaterialUI.SvgIcon.ActionGroupWork, onClick: this.goToHelpSomeone}, 'Help Someone'),
-                  React.createElement(MaterialUI.ListItem, {leftIcon: MaterialUI.SvgIcon.ActionGroupWork, onClick: this.goToHelpAGroup}, 'Help a Group'),
-                  React.createElement(MaterialUI.ListItem, {leftIcon: MaterialUI.SvgIcon.ActionGroupWork, onClick: this.goToGetHelp}, 'Get Help'),
-                  React.createElement(MaterialUI.ListItem, {leftIcon: MaterialUI.SvgIcon.ActionGroupWork, onClick: this.goToPreferences}, 'Preferences')
+                  React.createElement(MaterialUI.ListItem, {leftIcon: MaterialUI.SvgIcon.ActionGroupWork, onTouchTap: this.openStartAGroupDialog}, 'Start a Study Group'),
+                  React.createElement(MaterialUI.ListItem, {leftIcon: MaterialUI.SvgIcon.ActionGroupWork, onTouchTap: this.openAskForHelpDialog}, 'Ask for Help'),
+                  React.createElement(MaterialUI.ListItem, {leftIcon: MaterialUI.SvgIcon.ActionGroupWork, onTouchTap: this.openPreferencesDialog}, 'Preferences')
                 )
               }
             )
           ),
-          React.createElement(this.state.page)
+          ((this.state.page != null) ? React.createElement(this.state.page, {onClose: this.goHome}) : null),
+//           React.createElement(MaterialUI.BottomNavigation, {children: [
+//             React.createElement(MaterialUI.BottomNavigationItem, {label: 'Chat'}),
+//             React.createElement(MaterialUI.BottomNavigationItem, {label: 'Active Session'})
+//           ]})
         )
       )
     );

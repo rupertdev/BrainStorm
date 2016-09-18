@@ -8,6 +8,7 @@
     "material-ui": "latest",
     "react": "latest",
     "react-dom": "latest",
+    "react-redux": "latest",
     "react-tap-event-plugin": "latest",
     "redux": "latest",
     "socket.io-utils": "latest",
